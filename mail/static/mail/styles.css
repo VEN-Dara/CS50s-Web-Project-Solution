@@ -1,0 +1,32 @@
+textarea {
+    min-height: 400px;
+}
+
+.list-group-item {
+    display: grid;
+    grid-template-columns: 20% 60% 25%;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.list-group-item p{
+    margin: 0;
+}
+
+.read {
+    background-color: rgb(152, 152, 152);
+}
+
+.unread {
+    background-color: white;
+}
+
+.view-email-body {
+    white-space: pre-line;
+}
+
+.sent-btn {
+    margin-top: 10px;
+}
