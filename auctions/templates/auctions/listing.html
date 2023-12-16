@@ -1,0 +1,95 @@
+{% extends 'auctions/layout.html' %}
+{% load custom_filters %}
+
+{% block title %} Listing {% endblock %}
+
+{% block body %}
+    <div class="watchlist-btn-box">
+        <h2>Listing: {{auction.name}}</h2>
+        <form action="{% url 'update_watchlist' auction.id %}" method="post">
+            {% csrf_token %}
+            {% if watchlist == 1 %}
+                <button type="submit" class="btn btn-dark" name="remove_from_watchlist"><strong>-</strong> Watchlist</button>
+            {% else %}
+                <button type="submit" class="btn btn-secondary" name="add_to_watchlist"><strong>+</strong> Watchlist</button>
+            {% endif %}
+        </form>
+    </div>
+    <div class="image-auction-box">
+        <img src="{{auction.image_url}}" alt="auction_image" height="300px">
+    </div>
+    <br>
+    <div class="listing-auction-info">
+        <h2 class="listing-auction-name">{{auction.name}}</h2>
+        <div class="listing_by">
+            @<strong>{{auction.listed_by.username}}</strong> <strong>&sdot;</strong> Category: <strong> {{auction.category.name}}</strong>
+        </div>
+        <br>
+        <div class="auction-description"> {{auction.description}} </div>
+        <h2>${{last_bid_amount}}</h2>
+        {% if request.user.id != auction.listed_by.id %}
+            <p style="margin: 2px; font-size: 12px; font-weight: 500;">{{bid_message}}</p>
+            <form action="{% url 'listing' auction.id %}" method="post" class="form-bid">
+                {% csrf_token %}
+                <input class="form-input bid-amount" type="number" name="amount" placeholder="Bid" min="{{min_bid_amount}}" >
+                <input type="submit" value="Place Bid" class="btn btn-dark bid-btn">
+            </form>
+        {% else %}
+            <a href="{% url 'close_bid' auction.id %}" class="btn btn-danger">Close Bid</a>
+        {% endif %}
+    </div>
+    <br>
+    <hr>
+    <h3>Comments</h3>
+    <hr>
+    <p class="comment-name">Comment as <strong class="commenter-name">{{request.user.username}}</strong></p>
+    <form class="comment-form" action="{% url 'comment' auction.id %}" method="post">
+        {% csrf_token %}
+        <input class="comment-content" type="text" name="content" placeholder="Wanna comment something ...">
+        <button class="btn btn-dark" type="submit">Comment</button>
+    </form>
+    <br>
+    {%for comment in comments %}
+    <hr>
+    <div>
+        <p class="commenter-name">{{comment.username.username}} · <span>{{comment.date}}</span></p>
+        <div class="comment">
+            <p class="comment-content-text">{{comment.content}}</p>
+            <!-- <button class="reply-btn 1">Reply</button> -->
+        </div>
+        <div class="comment-box">
+            <form action="{% url 'comment' auction.id %}" method="post" class="reply-comment-form">
+                {% csrf_token %}
+                <input type="hidden" name="parent_comment" value="{{comment.id}}">
+                <input type="hidden" name="sibling_comment" value="{{comment.username.id}}">
+                <label class="commenter-name replyer-label"  for="content">@{{comment.username.username}}</label>
+                <input type="text" name="content" class="comment-content reply-comment-content" placeholder="Wanna comment something ..." value="">
+                <button type="submit" class="btn btn-dark">Comment</button>
+            </form>
+        </div>
+        <div class="reply-comment">
+            {% for reply_comment in comment.id|get_child_comments %}
+                <div>
+                    <p class="commenter-name" >{{reply_comment.username.username}} · <span>{{reply_comment.date}}</span></p>
+                    <div class="comment">
+                        <p class="comment-content-text"> <span class="commenter-name">@{{reply_comment.sibling_comment.username}}</span> {{reply_comment.content}}</p>
+                        <!-- <button class="reply-btn reply-btn-2">Reply</button> -->
+                    </div>
+                    <div class="reply-box">
+                        <form action="{% url 'comment' auction.id %}" method="post" class="reply-comment-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="parent_comment" value="{{comment.id}}">
+                            <input type="hidden" name="sibling_comment" value="{{reply_comment.username.id}}">
+                            <label class="commenter-name replyer-label"  for="content">@{{reply_comment.username.username}}</label>
+                            <input class="comment-content reply-comment-content" type="text" name="content" placeholder="Wanna comment something ..." value="">
+                            <button class="btn btn-dark" type="submit">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% empty %}
+    <p>No comment</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,384 @@
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+
+.layout-header {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding-top: 10px;
+    padding-left: 80px;
+    padding-right: 80px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 0px;
+}
+
+p {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+a {
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 48px;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.listing-container {
+    display: grid;
+    grid-template-columns: 340px 340px 340px 340px;
+    row-gap: 40px;
+}
+
+.auction-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.auction-container:hover {
+    margin-top: -2px;
+    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    z-index: 1;
+}
+
+.auction-container img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    text-align: center;
+}
+
+.auction-info {
+    padding: 10px;
+}
+
+.text-1 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.text-2 {
+    font-size: 12px;
+}
+
+.text-2-a {
+    height: 36px;
+    overflow: hidden;
+}
+
+.text-1-h {
+    height: 48px;
+    overflow: hidden;
+}
+
+.price {
+    border: 1px solid;
+    border-color: rgb(195, 195, 195) white white white;
+    padding-top: 4px;
+    /* padding-left: 10px; */
+}
+
+.date {
+    width: 100%;
+    text-align: end;
+    color: rgb(25, 25, 214);
+    font-weight: 600;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 80px;
+    padding: 20px;
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    height: 40px;
+    width: 350px;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+}
+
+.price-and-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid;
+    border-color: rgb(195, 195, 195) white white white;
+    padding-top: 4px;
+}
+
+.result {
+    font-family: Singel Serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.win {
+    color: blue;
+}
+
+.lose {
+    color: rgb(255, 0, 0);
+}
+
+.waiting {
+    color: rgb(22, 223, 22);
+}
+
+.form-new-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.form-input-new {
+    height: 40px;
+    width: 100%;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.btn-dark {
+    color: black;
+    background-color: white;
+}
+
+.category-btn {
+    font-size: 14px;
+    padding: 4px 22px;
+    font-weight: 500;
+}
+
+.category-box {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.category-scrollbar {
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+/* Hide native scrollbar */
+.category-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.watchlist-number {
+    padding: 2px 3px;
+    color: white;
+    background-color: #212529;
+    border-radius: 5px;
+}
+
+.image-auction-box {
+    background-color: red;
+    width: 70%;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-auction-box img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.btn-secondary {
+    background-color: #212529;
+}
+
+.btn-secondary :hover {
+    color: black;
+    background-color: white;
+}
+
+.watchlist-btn-box {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.listing-auction-info {
+    width: 100%;
+}
+
+.listing-auction-name {
+    font-size: 32px;
+    text-transform: capitalize;
+    padding-bottom: 4px;
+    margin-bottom: 0;
+}
+
+.form-bid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bid-amount {
+    margin: 0;
+}
+
+.bid-btn {
+    height: 40px;
+}
+
+.auction-description {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    width: 50%;
+    word-wrap: break-word;
+}
+
+.comment-name {
+    margin-bottom: 2px;
+}
+
+.comment-content {
+    height: 37.6px;
+    width: 350px;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.commenter-name {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 14px;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.commenter-name span {
+    font-size: 10px;
+    color: rgb(111, 17, 218);
+}
+
+.reply-comment-form {
+    display: flex;
+    align-items: center;
+}
+
+.reply-comment-form label {
+    margin: 0;
+    height: 37.6px;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px 0px 0px 5px;
+    padding: 8px 8px;
+    border-color: rgb(224, 224, 224);
+}
+
+.reply-comment-content {
+    margin-right: 6px;
+    border-radius: 0px 5px 5px 0px;
+    border-color: rgb(224, 224, 224) rgb(224, 224, 224) rgb(224, 224, 224) white;
+}
+
+.reply-comment {
+    margin-left: 30px;
+}
+
+.reply-btn {
+    border: none;
+    background-color: white;
+    color: rgb(111, 17, 218);
+    font-weight: 600;
+    font-size: 12px;
+    width: 50px;
+    margin-right: 30px;
+}
+
+.reply-btn:focus {
+    outline: none;
+  }
+
+.comment-content-text {
+    width: 350px;
+    word-wrap: break-word;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+.comment p {
+    margin-bottom: 2px;
+}
+

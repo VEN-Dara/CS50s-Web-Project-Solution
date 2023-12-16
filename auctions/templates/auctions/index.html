@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+{% load custom_filters %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <div class="listing-container">
+        {% for auction in auctions %}
+            <a href="{% url 'listing' auction.id %}">
+                <div class="auction-container" >
+                    <img src="{{auction.image_url}}" alt="{{auction.name}} - image">
+                    <div class="auction-info">
+                        <div class="text-1 text-1-h"> {{auction.name}} </div>
+                        <div class="text-2 text-2-a">{{auction.description}}</div>
+                        <div class="text-2 date">{{auction.created_date}}</div>
+                        <div class="text-1 price">${{ update_prices|get_dict_value:auction.id }}</div>
+                    </div>
+                </div>
+            </a>
+        {% empty %}
+        <li>No Aution!</li>
+        {% endfor %}
+    </div>
+{% endblock %}

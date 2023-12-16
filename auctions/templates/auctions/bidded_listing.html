@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+    <h2>Bidded Auctions</h2>
+    <div class="listing-container">
+        {% for bid in bids %}
+        <a href="{% url 'listing' bid.auction.id %}">
+            <div class="auction-container" >
+                <img src="{{bid.auction.image_url}}" alt="{{bid.auction.name}} - image">
+                <div class="auction-info">
+                    <div class="text-1 text-1-h"> {{bid.auction.name}} </div>
+                    <div class="text-2 text-2-a">{{bid.auction.description}}</div>
+                    <div class="text-2 date">Created: {{bid.auction.created_date}}</div>
+                    <div class="price-and-result">
+                        <div class="text-1">Price: ${{bid.amount}}</div>
+                        {% if bid.result == 'win' %}
+                        <div class="result win" >{{bid.result}}</div>
+                        {% elif bid.result == 'waiting' %}
+                        <div class="result waiting" >{{bid.result}}</div>
+                        {% else %}
+                        <div class="result lose" >{{bid.result}}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% empty %}
+        <li>No watchlist.</li>
+        {% endfor %}
+    </div>
+{% endblock %}
