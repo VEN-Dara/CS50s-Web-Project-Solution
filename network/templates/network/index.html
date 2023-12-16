@@ -1,0 +1,19 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+
+{% block body %}
+    <main>
+        <div class="card" id="post-container">
+            <form action="" class="post card-body" method="post">
+                {% csrf_token %}
+                <h5>New Post</h5>
+                <textarea name="text-post" id="text-post" style="width: 100%;" ></textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+        <div class="header-container"></div>
+        <div class="container-fluid"></div>
+    </main>
+{% endblock %}
