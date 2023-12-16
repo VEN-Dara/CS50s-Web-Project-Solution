@@ -1,0 +1,2 @@
+#Khmer
+Khmer is an Austroasiatic language spoken by the Khmer people, and the official and national language of Cambodia. Khmer has been influenced considerably by Sanskrit and Pali, especially in the royal and religious registers, through Hinduism and Buddhism.

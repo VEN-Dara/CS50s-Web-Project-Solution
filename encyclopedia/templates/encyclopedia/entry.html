@@ -1,0 +1,13 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <p> {{ content | safe }} </p>
+    <form action="{% url 'edit_url' title_entry=title %}" method="GET">
+        <button type="submit" class="btn btn-danger">Edit Info</button>
+    </form>
+
+{% endblock %}
